@@ -1,7 +1,7 @@
 <div id="start_round" class="page" style="display: none;">
     <div class="friend-game-header">
         <img class="friend-game-img" src="https://graph.facebook.com/853439200/picture" />
-        <span class="friend-game-name">Ok! Das opções abaixo, quais <span class="friend-name"></span> escolherá? Marque até 3.</span>
+        <span class="friend-game-name">Ok! From the options below, which are <span class="friend-name"></span>'s favorite? Pick up to 3.</span>
         <div class="clearB"></div>
     </div>
     

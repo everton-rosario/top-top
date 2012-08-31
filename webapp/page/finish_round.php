@@ -1,6 +1,6 @@
 <div id="finish_round" class="page" style="display: none;">
     <div class="friend-game-header">
-        <span class="friend-game-name">Marque suas opções preferidas (até 3)</span>
+        <span class="friend-game-name">What are you favorite choices? Pick up to 3 items.</span>
         <div class="clearB"></div>
     </div>
     

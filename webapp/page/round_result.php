@@ -1,5 +1,5 @@
 <div id="round_result" class="page" style="display: none;">
-    <span class="text-large">Resultado!</span>
+    <span class="text-large">Let's see the score!</span>
     
     <div class="game-category-name"></div>
     

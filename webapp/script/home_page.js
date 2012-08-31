@@ -38,9 +38,11 @@ var home_page = new function() {
 	
 	events.bind('rounds_loaded', function(event, my_turn, their_turn) {
 		function renderRounds() {
+			$('#my_turn_rounds_loading, #their_turn_rounds_loading').hide();
 			$('#my_turn_rounds, #their_turn_rounds').empty();
 			
 			$('#my_turn_rounds_empty').setVisible(!my_turn || !my_turn.length);
+			$('#my_turn_rounds').setVisible(my_turn && my_turn.length);
 			
 			if (my_turn) {
 				my_turn.forEach(function(round) {
@@ -49,6 +51,7 @@ var home_page = new function() {
 			}
 			
 			$('#their_turn_rounds_empty').setVisible(!their_turn || !their_turn.length);
+			$('#their_turn_rounds').setVisible(their_turn && their_turn.length);
 	
 			if (their_turn) {
 				their_turn.forEach(function(round) {
