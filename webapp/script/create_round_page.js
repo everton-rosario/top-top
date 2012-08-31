@@ -6,15 +6,20 @@ var create_round_page = new function() {
 	function renderFriend(friend_id) {
 		var dom = 
 			$('<div/>')
-				.addClass('friend')
+				.addClass('friend-list-item')
 				.append(
 					$('<img/>')
-						.addClass('picture')
+						.addClass('friend-img')
 						.attr('src', user_manager.getPicture(friend_id, 'square'))
 				)
 				.append(
 					$('<span/>')
+						.addClass('friend-name')
 						.html(user_manager.users[friend_id].name)
+				)
+				.append(
+					$('<div/>')
+						.addClass('clearB')
 				)
 				.click(function() {
 					select_category_page.show(friend_id);
