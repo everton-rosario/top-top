@@ -61,4 +61,18 @@ var user_manager = new function() {
 			events.fire('non_application_friends_loaded', friends_ids);
 		});
 	});
+	
+	$o.searchFriends = function(keyword) {
+		var result = [];
+		
+        [$o.application_friends, $o.non_application_friends].forEach(function(list) {
+        	list.forEach(function(friend_id) {
+        		if (new RegExp(keyword, 'i').test($o.users[friend_id].name)) {
+        			result.push(friend_id);
+        		}
+        	});
+        });
+        
+        return result;
+	};
 };

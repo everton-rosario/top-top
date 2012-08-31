@@ -28,15 +28,39 @@ var create_round_page = new function() {
 		return dom;
 	}
 	
-	events.bind('application_friends_loaded non_application_friends_loaded', function(event, friends_ids) {
-		friends_ids.forEach(function(friend_id) {
+	function filterFriends(keyword) {
+		if (typeof(keyword) == 'undefined') {
+			keyword = $o.keyword;
+		}
+		
+		$('#friends_list').empty();
+		
+		friends_rendered = 0;
+		
+		user_manager.searchFriends(keyword).forEach(function(friend_id) {
 			if (++friends_rendered < 20) {
 				$('#friends_list').append(renderFriend(friend_id));
 			}
 		});
-	});
+	}
 	
 	$o.show = function() {
+		filterFriends();
+		
 		page_controller.goTo('#create_round');
 	};
+	
+	events.bind('application_friends_loaded non_application_friends_loaded', function() {
+		filterFriends();
+	});
+	
+	$(document).ready(function() {
+		$('#search_field').keydown(function() {
+			var keyword = filterFriends($('#search_field').val());
+			
+			if (keyword != $o.search_keyword) {
+				filterFriends($o.search_keyword = keyword);
+			}
+		});
+	});
 };

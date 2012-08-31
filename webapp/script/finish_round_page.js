@@ -3,6 +3,8 @@ var finish_round_page = new function() {
 		item_mosaic;
 	
 	$o.show = function() {
+		$('#finish_round .game-category-name').html(round_manager.current_round.category);
+		
 		item_mosaic = new ItemMosaic('#items_to_like', round_manager.current_round.items);
 		
 		page_controller.goTo('#finish_round');

@@ -30,6 +30,10 @@ and open the template in the editor.
                 <span class="friend-name">Everton Rosario</span>
                 <div class="clearB"></div>
             </div>
+            
+            <div class="friend-list-nobody">
+                Ninguém
+            </div>
 
             <br/><br/>
 
@@ -40,7 +44,7 @@ and open the template in the editor.
                 <span class="friend-name">Luiz Tordin</span>
                 <div class="clearB"></div>
             </div>
-            <div class="friend-list-item">
+            <div class="friend-list-item" onclick="document.getElementById('view_home').style.display = 'none';document.getElementById('view_game_results').style.display = 'block'">
                 <img class="friend-img" src="https://graph.facebook.com/853439200/picture" />
                 <span class="friend-name">Everton Rosario</span>
                 <div class="clearB"></div>
@@ -159,11 +163,40 @@ and open the template in the editor.
                     <div class="clearB"></div>
                 </div>
             </div>
-            
+
             <div class="text-center">
                 <div class="btn-default" onclick="document.getElementById('view_home').style.display = 'block';document.getElementById('view_game_friend').style.display = 'block'">OK!</div>  
             </div>
+
+        </div>
+
+        <div id="view_game_results" class="hidden">
+            <span class="text-large">Acertos de Everton</span>
             
+            <div class="game-category-name">Comidas</div>
+
+            <div class="game-choosen">
+                <img class="game-choosen-img" src="content/food/6.jpg" />
+                <span>Feijoada</span>
+                <img class="game-choosen-icn" src="img/icn-tick.png" />
+                <div class="clearB"></div>
+            </div>
+            <div class="game-choosen">
+                <img class="game-choosen-img" src="content/food/7.jpg" />
+                <span>Frango Xadrez</span>
+                <img class="game-choosen-icn" src="img/icn-x.png" />
+                <div class="clearB"></div>
+            </div>
+            <div class="game-choosen">
+                <img class="game-choosen-img" src="content/food/8.jpg" />
+                <span>Lasagna</span>
+                <img class="game-choosen-icn" src="img/icn-x.png" />
+                <div class="clearB"></div>
+            </div>
+            
+            <div class="text-center">
+                <div class="btn-default" onclick="document.getElementById('view_home').style.display = 'block';document.getElementById('view_game_results').style.display = 'block'">OK!</div>  
+            </div>
         </div>
 
     </body>
