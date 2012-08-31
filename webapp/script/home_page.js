@@ -4,15 +4,20 @@ var home_page = new function() {
 	function renderRound(round, playable) {
 		var dom = 
 			$('<div/>')
-				.addClass('round')
+				.addClass('friend-list-item')
 				.append(
 					$('<img/>')
-						.addClass('picture')
-						.attr('src', user_manager.getPicture(round.friend_id, 'normal'))
+						.addClass('friend-img')
+						.attr('src', user_manager.getPicture(round.friend_id, 'square'))
+				)
+				.append(
+					$('<span/>')
+						.addClass('friend-name')
+						.html(user_manager.users[round.friend_id].name)
 				)
 				.append(
 					$('<div/>')
-						.html(user_manager.users[round.friend_id].name)
+						.addClass('clearB')
 				);
 				
 		if (playable) {

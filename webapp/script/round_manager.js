@@ -14,6 +14,8 @@ var round_manager = new function() {
 	$o.createRound = function(friend_id, category, callback) {
 		server.createRound(friend_id, category, function(success, round) {
 			$o.current_round = round;
+			round.friend_id = friend_id;
+			round.category = category;
 			callback(success);
 		});
 	};

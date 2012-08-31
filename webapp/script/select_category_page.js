@@ -12,8 +12,21 @@ var select_category_page = new function() {
 	function renderCategory(category) {
 		var dom =
 			$('<div/>')
-				.addClass('category')
-				.html(category)
+				.addClass('category-list-item')
+				.append(
+					$('<img/>')
+						.addClass('category-img')
+						.attr('src', 'img/icn-category-' + category + '.png')
+				)
+				.append(
+					$('<span/>')
+						.addClass('category-name')
+						.html(category)
+				)
+				.append(
+					$('<div/>')
+						.addClass('clearB')
+				)
 				.click(function() {
 					round_manager.createRound($o.friend_id, category, function(success) {
 						if (success) {
@@ -27,6 +40,8 @@ var select_category_page = new function() {
 	
 	$o.show = function(friend_id) {
 		$o.friend_id = friend_id;
+		
+		$('#choose_category_friend_name').html(user_manager.users[friend_id].first_name);
 		
 		$('#category_list').empty();
 		

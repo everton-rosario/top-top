@@ -1,6 +1,12 @@
 <html>
 <head>
     <title>Top-Top</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="user-scalable=no, width=device-width">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+
+    <link href='http://fonts.googleapis.com/css?family=Peralta' rel='stylesheet' type='text/css'>
 	<style>
 		<?php includeFiles('style/*.css') ?>
 	</style>

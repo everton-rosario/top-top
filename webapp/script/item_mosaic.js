@@ -3,24 +3,25 @@ function ItemMosaic(selector, items) {
 	
 	$o.items = {};
 
-	function selectItem(item_id) {
-		$o.items[item_id] = true;
+	function toggleItem(item_id) {
+		$o.items[item_id] = !$o.items[item_id];
 	}
 	
 	function renderItem(item) {
 		var dom = 
 			$('<div/>')
-				.addClass('item')
+				.addClass('game-choice')
 				.append(
 					$('<img/>')
 						.attr('src', item.image)
 				)
 				.append(
-					$('<span/>')
+					$('<div/>')
 						.html(item.title)
 				)
-				.click(function() {
-					selectItem(item.id);
+				.click(function(event) {
+					$(event.target).toggleClass('selected')
+					toggleItem(item.id);
 				});
 				
 		return dom;
@@ -28,7 +29,23 @@ function ItemMosaic(selector, items) {
 	
 	$(selector).empty();
 	
-	items.forEach(function(item) {
-		$(selector).append(renderItem(item));
+	items.forEach(function(item, i) {
+		if (i == 3 || i == 5) {
+			$(selector).append(
+				$('<div/>')
+					.addClass('clearB')
+			);
+			
+		} else if (i == 4) {
+			$(selector).append(renderItem({
+				image : '',
+				title : 'Nenhum',
+				id    : 0
+			}));
+		}
+		
+		if (i < 8) {
+			$(selector).append(renderItem(item));
+		}
 	});
 }
