@@ -24,13 +24,13 @@ var social_helper = new function() {
 	    		};
 	    		
 	    	items.forEach(function(item_id) {
-		    	data[og_type_map[category]] = '/og/' + og_type_map[category] + '.php?id=' + item_id;
+		    	data[og_type_map[category]] = 'http://fortis4.com/top-top/og/' + og_type_map[category] + '.php?id=' + item_id;
 		    	
 			    FB.api('/me/top-top:favorite', 
 					'post', 
 					data,
 					function(response) {
-						console.log(response);
+						console.log(response);git
 						if (!response || response.error) {
 							console.log('Error occured doing opengraph');
 						} else {
