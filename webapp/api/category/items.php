@@ -8,7 +8,7 @@ if (!isset($_REQUEST['category'])) {
 
 } else {
     $category = new Category($_REQUEST['category']);
-    printJSONResult(true, 'success', $category->getItems());
+    printJSONResult(true, 'success', $category->getSortedItems());
 }
 
 

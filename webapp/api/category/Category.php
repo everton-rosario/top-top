@@ -30,6 +30,11 @@ class Category {
     public function getItems() {
         return $this->items;
     }
+    
+    public function getSortedItems() {
+        shuffle($this->items);
+        return array_slice($this->items, 0, 8); 
+    }
 
     public function getCategories() {
         return array_keys(self::$categories);
