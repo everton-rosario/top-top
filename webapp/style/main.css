@@ -37,6 +37,14 @@ html, body {
     display: none;
 }
 
+.friend-list-nobody {
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid #3f836e;
+    background-color: #b1d5bb;
+    border-radius: 5px;
+}
+
 .friend-list-item {
     margin: 5px;
     padding: 5px;
@@ -151,4 +159,27 @@ html, body {
 .game-choice img.selected {
     opacity: 0.5;
     box-shadow: 0px 1px 10px black;
+}
+
+.game-choosen {
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid #92a184;
+    background-color: #dfd349;
+    border-radius: 5px;
+}
+
+.game-choosen .game-choosen-img {
+    width: 32px;
+    height: 32px;
+    margin-right: 5px;
+    border-radius: 8px;
+    border: 1px solid #b1d5bb;
+    float: left;
+}
+
+.game-choosen .game-choosen-icn {
+    float: right;
+    width: 32px;
+    height: 32px;
 }
