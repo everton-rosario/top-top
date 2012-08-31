@@ -51,14 +51,20 @@ var user_manager = new function() {
 			});
 		}
 		
+		var waiter = new Waiter(2, function() {
+			events.fire('friends_loaded', $o.application_friends.concat($o.non_application_friends));
+		});
+		
 		loadFriends(true, function(friends_ids) {
 			$o.application_friends = friends_ids;
 			events.fire('application_friends_loaded', friends_ids);
+			waiter.go();
 		});
 		
 		loadFriends(false, function(friends_ids) {
 			$o.non_application_friends = friends_ids;
 			events.fire('non_application_friends_loaded', friends_ids);
+			waiter.go();
 		});
 	});
 	
