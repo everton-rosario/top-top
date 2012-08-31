@@ -1,7 +1,7 @@
 var home_page = new function() {
 	var $o = this;
 	
-	function renderRound(round) {
+	function renderRound(round, playable) {
 		var dom = 
 			$('<div/>')
 				.addClass('round')
@@ -15,6 +15,12 @@ var home_page = new function() {
 						.html(user_manager.users[round.friend_id].name)
 				);
 				
+		if (playable) {
+			dom.click(function() {
+				finish_round_page.show(round);
+			});
+		}
+				
 		return dom;
 	}
 	
@@ -22,7 +28,7 @@ var home_page = new function() {
 		$('#my_turn_rounds, #their_turn_rounds').empty();
 		
 		my_turn.forEach(function(round) {
-			$('#my_turn_rounds').append(renderRound(round));
+			$('#my_turn_rounds').append(renderRound(round, true));
 		});
 		
 		their_turn.forEach(function(round) {
