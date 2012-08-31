@@ -30,7 +30,6 @@ var social_helper = new function() {
 					'post', 
 					data,
 					function(response) {
-						console.log(response);git
 						if (!response || response.error) {
 							console.log('Error occured doing opengraph');
 						} else {
