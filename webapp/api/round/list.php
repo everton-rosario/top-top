@@ -16,7 +16,7 @@ if (!isset($_REQUEST['user'])) {
     $response = array('my_turn' => $myTurn,
                       'their_turn' => $theirsTurn);
     
-    printJSONResult(true, 'success', json_encode($response));
+    printJSONResult(true, 'success', $response);
 }
 
 
