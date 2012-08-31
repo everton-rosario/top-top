@@ -8,7 +8,3 @@ var production = window.location.href.indexOf('localhost') == -1,
 	};
 	
 environment.facebook_url = window.location.protocol + '//apps.facebook.com/' + environment.namespace;
-
-$(document).ready(function() {
-	FB.Canvas.setAutoGrow(true, 250);	
-});

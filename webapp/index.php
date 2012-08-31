@@ -22,10 +22,4 @@
 			include $file;
 		}
 	}
-	
-	function listFiles($pattern) {
-		$files = glob($pattern);
-		sort($files);
-		return join(',', $files);
-	}
 ?>
