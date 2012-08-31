@@ -18,6 +18,10 @@
 </head>
 <body>
 	<div id="fb-root"></div>
+	<div id="header">
+		<img src="img/toptopicon.png"/> <span>Top Top!</span>
+	</div>
+	<br/><br/>
 	<?php includeFiles('page/*.php') ?>
 </body>
 </html>

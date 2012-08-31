@@ -37,20 +37,20 @@ html, body {
     display: none;
 }
 
-.home-header {
-    border: 0px solid #b1d5bb;
-    border-bottom-width: 2px;
-    margin-bottom: 10px;
-    padding-bottom: 10px;
+#header {
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.15);
+    padding: 10px;
 }
 
-.home-user-img {
-    float: left;
-    margin-right: 10px;
+#header img {
+    width: 50px;
+    vertical-align: middle;
 }
 
-.home-user-info {
-    float: left;
+#header span {
+    margin-left: 10px;
+    font-size: 24px;
 }
 
 .friend-list-nobody {
@@ -69,6 +69,10 @@ html, body {
     background-color: #b1d5bb;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.friend-list-item .details {
+    font-size: 12px;
 }
 
 .friend-list-item .friend-img {
