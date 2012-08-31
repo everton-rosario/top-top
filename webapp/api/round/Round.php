@@ -38,7 +38,22 @@ class Round {
         return $round;
     }
     
-    public function store() {
+    public static function findById($id){
+        $round = new Round();
+
+        $item = $round->sdb->getAttributes(awsRoundDomain, $id);
+
+        $round->id = $item['id'];
+        $round->category = $item['category'];
+        $round->user = $item['user'];
+        $round->friend = $item['friend'];
+        $round->items = self::fetchItems($round->category, json_decode($item['items']));
+        $round->phase = $item['phase'];
+        
+        return $round;
+    }
+    
+    public function storeNew() {
         $request = array();
         $request['id'] = array('value' => $this->id);
         $request['category'] = array('value' => $this->category);
@@ -46,6 +61,15 @@ class Round {
         $request['friend'] = array('value' => $this->friend);
         $request['items'] = array('value' => json_encode($this->getItemIds()));
         $request['phase'] = array('value' => $this->phase);
+
+        return $this->sdb->putAttributes($this->domain, $this->id, $request);
+    }
+    
+    public function storeGuessed() {
+        $request = array();
+        $request['id'] = array('value' => $this->id);
+        $request['guessed-items'] = array('value' => json_encode($this->guessedItems));
+        $request['phase'] = array('value' => 'started', 'replace' => 'true');
 
         return $this->sdb->putAttributes($this->domain, $this->id, $request);
     }
@@ -62,6 +86,20 @@ class Round {
         }
         
         return $ids;
+    }
+    
+    public static function fetchItems($category, $ids) {
+        $category = new Category($category);
+        $baseItems = $category->getItems();
+        
+        $fetchedItems = array();
+        foreach ($baseItems as $baseItem) {
+            if (in_array($baseItem['id'], $ids)) {
+                array_push($fetchedItems, $baseItem);
+            }
+        }
+        
+        return $fetchedItems;
     }
 }    
 ?>

@@ -53,13 +53,13 @@ and open the template in the editor.
             </div>
 
         </div>
-        
+
         <div id="view_choose_friends" class="hidden">
 
             <span class="text-large">Escolha um amigo</span>
 
             <br/><br/>
-            
+
             <div class="friend-list-item" onclick="document.getElementById('view_choose_friends').style.display = 'none';document.getElementById('view_choose_category').style.display = 'block'">
                 <img class="friend-img" src="https://graph.facebook.com/1010172174/picture" />
                 <span class="friend-name">Luiz Tordin</span>
@@ -83,29 +83,87 @@ and open the template in the editor.
             </div>
 
         </div>
-        
+
         <div id="view_choose_category" class="hidden">
 
             <span class="text-large">Escolha um tema para jogar com <span id="choose_category_friend_name">Eduardo</span></span>
 
             <br/><br/>
-            
-            <div class="friend-list-item">
-                <img class="friend-img" src="img/icn-category-cars.png" />
-                <span class="friend-name">Carros</span>
+
+            <div class="category-list-item" onclick="document.getElementById('view_choose_category').style.display = 'none';document.getElementById('view_game_friend').style.display = 'block'">
+                <img class="category-img" src="img/icn-category-cars.png" />
+                <span class="category-name">Carros</span>
                 <div class="clearB"></div>
             </div>
-            <div class="friend-list-item">
-                <img class="friend-img" src="img/icn-category-food.png" />
-                <span class="friend-name">Comidas</span>
+            <div class="category-list-item">
+                <img class="category-img" src="img/icn-category-food.png" />
+                <span class="category-name">Comidas</span>
                 <div class="clearB"></div>
             </div>
-            <div class="friend-list-item">
-                <img class="friend-img" src="img/icn-category-movies.png" />
-                <span class="friend-name">Filmes</span>
+            <div class="category-list-item">
+                <img class="category-img" src="img/icn-category-movies.png" />
+                <span class="category-name">Filmes</span>
                 <div class="clearB"></div>
             </div>
 
+        </div>
+
+        <div id="view_game_friend" class="hidden">
+            <div class="friend-game-header">
+                <img class="friend-game-img" src="https://graph.facebook.com/853439200/picture" />
+                <span class="friend-game-name">Quais opções (até 3) você acha que Everton escolheria? </span>
+                <div class="clearB"></div>
+            </div>
+            <div class="game-category-name">Comidas</div>
+            <div class="clearB"></div>
+
+            <div class="text-center">
+                <div class="game-choice-wrapper">
+                    <div class="game-choice">
+                        <img src="content/food/1.jpg" />
+                        <div>Camarão</div>
+                    </div>
+                    <div class="game-choice">
+                        <img src="content/food/2.jpg" />
+                        <div>Frango Assado</div>
+                    </div>
+                    <div class="game-choice">
+                        <img src="content/food/3.jpg" />
+                        <div>Baião de Dois</div>
+                    </div>
+                    <div class="clearB"></div>
+                    <div class="game-choice">
+                        <img src="content/food/4.jpg" />
+                        <div>Bife com Batata</div>
+                    </div>
+                    <div class="game-choice">
+                        NDA
+                    </div>
+                    <div class="game-choice">
+                        <img src="content/food/5.jpg" />
+                        <div>Carne de Panela</div>
+                    </div>
+                    <div class="clearB"></div>
+                    <div class="game-choice">
+                        <img src="content/food/6.jpg" />
+                        <div>Feijoada</div>
+                    </div>
+                    <div class="game-choice">
+                        <img src="content/food/7.jpg" />
+                        <div>Frango Xadrez</div>
+                    </div>
+                    <div class="game-choice">
+                        <img src="content/food/8.jpg" />
+                        <div>Lasagna</div>
+                    </div>
+                    <div class="clearB"></div>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <div class="btn-default" onclick="document.getElementById('view_home').style.display = 'block';document.getElementById('view_game_friend').style.display = 'block'">OK!</div>  
+            </div>
+            
         </div>
 
     </body>
