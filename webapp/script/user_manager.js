@@ -34,19 +34,19 @@ var user_manager = new function() {
 	        FB.Data.query(
 	            'select uid, name, first_name, sex, locale ' +
 	            'from user ' +
-	            'where is_app_user = ' + (with_application ? 1 : 0) + ' and uid in (select uid2 from friend where uid1 = me())'
-	        ).wait(function(rows) {
-				friends_ids = [];
-				
-				if (rows) {					
-					rows.forEach(function(row) {
-						$o.users[row.uid] = row;
-	                	friends_ids.push(row.uid);
-					});
-				}
-				
-				callback(friends_ids);
-			});
+	            'where is_app_user = ' + (with_application ? 1 : 0) + ' and uid in (select uid2 from friend where uid1 = me())',
+		        function(rows) {
+					friends_ids = [];
+					
+					if (rows) {					
+						rows.forEach(function(row) {
+							$o.users[row.uid] = row;
+		                	friends_ids.push(row.uid);
+						});
+					}
+					
+					callback(friends_ids);
+				});
 		}
 		
 		loadFriends(true, function(friends_ids) {

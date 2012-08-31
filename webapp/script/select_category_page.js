@@ -13,12 +13,21 @@ var select_category_page = new function() {
 		var dom =
 			$('<div/>')
 				.addClass('category')
-				.html(category);
+				.html(category)
+				.click(function() {
+					round_manager.createRound($o.friend_id, category, function(success) {
+						if (success) {
+							start_round_page.show();
+						}
+					});
+				});
 				
 		return dom;
 	}
 	
-	$o.show = function() {
+	$o.show = function(friend_id) {
+		$o.friend_id = friend_id;
+		
 		$('#category_list').empty();
 		
 		pickRandom($o.categories, 3).forEach(function(category) {

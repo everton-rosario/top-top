@@ -8,15 +8,21 @@ require_once(__ROOT__.'/lib/config.inc.php');
 class Category {
     private $title;
     private $items;
+    private $id;
     
     private static $categories;
     
     public function __construct($category) {
+        $this->id = $category;
         $loadedCategory = self::load($category);
         $this->title = $loadedCategory['title'];
         $this->items = $loadedCategory['items'];
     }
     
+    public function getId() {
+        return $this->id;
+    }
+
     public function getTitle() {
         return $this->title;
     }
