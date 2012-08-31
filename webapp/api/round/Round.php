@@ -51,9 +51,9 @@ class Round {
                                            $item['friend'],
                                            self::fetchItems($item['category'], json_decode($item['items'])),
                                            $item['phase'],
-                                           NULL,
-                                           NULL,
-                                           NULL);
+                                           isset($item['guessed-items']) ? json_decode($item['guessed-items']) : NULL,
+                                           isset($item['true-items']) ? json_decode($item['true-items']) : NULL,
+                                           isset($item['points']) ? $item['points'] : NULL);
         
         return $round;
     }
