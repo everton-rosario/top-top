@@ -38,19 +38,19 @@ html, body {
 }
 
 #header {
-	border-radius: 20px;
-	background: rgba(0, 0, 0, 0.15);
-	padding: 10px;
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.15);
+    padding: 10px;
 }
 
 #header img {
-	width: 50px;
-	vertical-align: middle;
+    width: 50px;
+    vertical-align: middle;
 }
 
 #header span {
-	margin-left: 10px;
-	font-size: 24px;
+    margin-left: 10px;
+    font-size: 24px;
 }
 
 .friend-list-nobody {
@@ -72,7 +72,7 @@ html, body {
 }
 
 .friend-list-item .details {
-	font-size: 12px;
+    font-size: 12px;
 }
 
 .friend-list-item .friend-img {
@@ -122,8 +122,12 @@ html, body {
     cursor: pointer;
 }
 
+.btn-buy {
+    padding: 2px 10px !important;
+}
+
 .friend-game-header {
-    
+
 }
 
 .friend-game-header .friend-game-img {
@@ -205,7 +209,7 @@ html, body {
 }
 
 #search_field {
-	width: 100%;
-	border: 1px solid #777;
-	padding: 8px;
+    width: 100%;
+    border: 1px solid #777;
+    padding: 8px;
 }
