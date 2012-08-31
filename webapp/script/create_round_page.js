@@ -42,12 +42,17 @@ var create_round_page = new function() {
 	
 	$o.show = function() {
 		filterFriends('');
+		
 		page_controller.goTo('#create_round');
 	};
 	
 	$(document).ready(function() {
-		$('#search_button').click(function() {
-			filterFriends($('#search_field').val());
+		$('#search_field').keydown(function() {
+			var keyword = filterFriends($('#search_field').val());
+			
+			if (keyword != $o.search_keyword) {
+				filterFriends($o.search_keyword = keyword);
+			}
 		});
 	});
 };
