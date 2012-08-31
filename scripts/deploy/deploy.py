@@ -16,10 +16,10 @@ print 'Updating repository'
 call(['git', 'pull'])
 
 print 'Cleaning Apache directory'
-ensure_directory('/var/www/html/top/')
-call('sudo rm -Rf /var/www/html/top/*', shell=True)
+ensure_directory('/var/www/html/top-top/')
+call('sudo rm -Rf /var/www/html/top-top/*', shell=True)
 
 print 'Copying files'
-call('sudo cp -R webapp/* /var/www/html/top/', shell=True)
+call('sudo cp -R webapp/* /var/www/html/top-top/', shell=True)
 call('cp scripts/deploy/deploy.py ../', shell=True)
 
