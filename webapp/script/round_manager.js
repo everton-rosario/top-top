@@ -2,7 +2,14 @@ var round_manager = new function() {
 	var $o = this;
 	
 	$o.loadRounds = function() {
-		if (user_manager.user_id) {
+		if (!user_manager.user_id) {
+			console.log('try again...');
+			
+			setTimeout(function() {
+				$o.loadRounds();
+			}, 500);
+			
+		} else {
 			server.getRounds(function(success, data) {
 				if (success) {
 					events.fire('rounds_loaded', data.my_turn, data.their_turn);
