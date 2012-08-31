@@ -1,6 +1,7 @@
 var select_category_page = new function() {
-	var $o = this,
-		categories = [];
+	var $o = this;
+		
+	$o.categories = [];
 
 	$(document).ready(function() {
 		server.getCategories(function(success, categories) {
@@ -21,7 +22,7 @@ var select_category_page = new function() {
 		$('#category_list').empty();
 		
 		pickRandom($o.categories, 3).forEach(function(category) {
-			$('#category_list').append(renderCategory(category));
+			$('#categories_list').append(renderCategory(category));
 		});
 		
 		page_controller.goTo('#select_category');
