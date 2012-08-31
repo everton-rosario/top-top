@@ -9,22 +9,24 @@ var facebook_connector = new function() {
 	};
 	
 	$o.requestPermissions = function(permissions) {
-		FB.Data.query(
-			'select ' + permissions.join(',') + ' ' +
-			'from permissions ' +
-			'where uid = me()',
-			function(rows) {
-				if (rows) {
-					if (permissions.some(function(permission) {
-						return !rows[0][permission];
-					})) {
-						FB.ui({
-							method : 'permissions.request',
-							perms  : permissions.join(',')
-						});
-					}
+		FB.api({
+			method : 'fql.query',
+			query  : 
+				'select ' + permissions.join(',') + ' ' +
+				'from permissions ' +
+				'where uid = me()'
+		}, function(rows) {
+			if (rows) {
+				if (permissions.some(function(permission) {
+					return !rows[0][permission];
+				})) {
+					FB.ui({
+						method : 'permissions.request',
+						perms  : permissions.join(',')
+					});
 				}
-			});
+			}
+		});
 	};
 	
 	$(document).ready(function() {
