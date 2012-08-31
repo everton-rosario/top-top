@@ -10,5 +10,14 @@ foreach ($category->getItems() as $item) {
 		$theItem = $item;
 	}
 }
-echo(json_encode(var_dump($theItem)));
+
+$currentURL = currentURL();
+$parsedURL = parse_url($currentURL);
+$queryString = '?' . $parsedURL['query'];
 ?>
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# top-top: http://ogp.me/ns/fb/top-top#">
+<meta property="fb:app_id" content="406010089465472" /> 
+<meta property="og:type" content="top-top:car" /> 
+<meta property="og:url" content="<?php echo($currentURL);?>" /> 
+<meta property="og:title" content="<?php echo($theItem['title']);?>" /> 
+<meta property="og:image" content="http://fortis4.com/top-top/<?php echo($theItem['image']);?>" />
