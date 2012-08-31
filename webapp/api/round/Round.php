@@ -49,7 +49,7 @@ class Round {
                                            $item['category'],
                                            $item['user'],
                                            $item['friend'],
-                                           self::fetchItems($round->category, json_decode($item['items'])),
+                                           self::fetchItems($item['category'], json_decode($item['items'])),
                                            $item['phase'],
                                            NULL,
                                            NULL,
@@ -107,11 +107,11 @@ class Round {
     }
 
     public function storeTruth() {
-        
+        $this->phase = 'finished';
         $request = array();
         $request['id'] = array('value' => $this->id);
         $request['true-items'] = array('value' => json_encode($this->trueItems));
-        $request['phase'] = array('value' => 'finished', 'replace' => 'true');
+        $request['phase'] = array('value' => $this->phase, 'replace' => 'true');
         $request['points'] = array('value' => (string) $this->points, 'replace' => 'true');
 
         return $this->sdb->putAttributes($this->domain, $this->id, $request);
@@ -122,10 +122,6 @@ class Round {
                      'items' => $this->items);
     }
     
-    public function finishedResponse() {
-        return $this->toArray();
-    }
-
     public function getItemIds() {
         $ids = array();
         foreach ($this->items as $key => $item) {
