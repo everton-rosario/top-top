@@ -57,12 +57,16 @@ var create_round_page = new function() {
 	});
 	
 	$(document).ready(function() {
-		$('#search_field').keydown(function() {
-			var keyword = filterFriends($('#search_field').val());
-			
-			if (keyword != $o.search_keyword) {
-				filterFriends($o.search_keyword = keyword);
-			}
-		});
+		$('#search_field')
+			.focus(function() {
+				$('#search_field').val('')
+			})
+			.keydown(function() {
+				var keyword = filterFriends($('#search_field').val());
+				
+				if (keyword != $o.search_keyword) {
+					filterFriends($o.search_keyword = keyword);
+				}
+			});
 	});
 };
