@@ -4,7 +4,8 @@
         <span class="friend-game-name">Quais opções (até 3) você acha que <span class="friend-name"></span> escolheria?</span>
         <div class="clearB"></div>
     </div>
-    <div class="game-category-name">Comidas</div>
+    
+    <div class="game-category-name"></div>
     <div class="clearB"></div>
 
     <div class="text-center">
