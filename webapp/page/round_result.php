@@ -1,4 +1,11 @@
 <div id="round_result" class="page" style="display: none;">
-	<p>Round finished!</p>
-	<span id="result_checked_button">Ok</span>
+    <span class="text-large">Resultado de <span class="friend_name"></span></span>
+    
+    <div class="game-category-name"></div>
+    
+    <div id="round_items_result"></div>
+    
+    <div class="text-center">
+        <div class="btn-default" id="result_checked_button">OK!</div>  
+    </div>
 </div>

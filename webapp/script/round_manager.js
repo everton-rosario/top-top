@@ -2,9 +2,21 @@ var round_manager = new function() {
 	var $o = this;
 	
 	$o.loadRounds = function() {
-		if (user_manager.user_id) {
+		if (!user_manager.user_id) {
+			setTimeout(function() {
+				$o.loadRounds();
+			}, 100);
+			
+		} else {
 			server.getRounds(function(success, data) {
 				if (success) {
+					if (data.my_turn) {
+						//work-around para friend vs user
+						data.my_turn.forEach(function(round) {
+							round.friend = round.user;
+						});
+					}
+					
 					events.fire('rounds_loaded', data.my_turn, data.their_turn);
 				}
 			});
@@ -14,7 +26,7 @@ var round_manager = new function() {
 	$o.createRound = function(friend_id, category, callback) {
 		server.createRound(friend_id, category, function(success, round) {
 			$o.current_round = round;
-			round.friend_id = friend_id;
+			round.friend = friend_id;
 			round.category = category;
 			callback(success);
 		});
@@ -30,8 +42,10 @@ var round_manager = new function() {
 		});
 	};
 	
-	$o.submitAnswers = function(items) {
-		server.finishRound($o.current_round.id, items, function(success) {
+	$o.submitAnswers = function(items, callback) {
+		server.finishRound($o.current_round.id, items, function(success, data) {
+			$o.current_round.result = data;
+			
 			callback(success);
 		});
 	};
