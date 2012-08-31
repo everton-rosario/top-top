@@ -1,11 +1,9 @@
 var production = window.location.href.indexOf('localhost') == -1,
 	environment = {
 		production  : production,
-		page_id     : 370818262966838,
-		facebook_id : production ? '366598686721264' : '424890690869239',
-		server_url  : window.location.protocol + (production ? '//fortis4.com/futebolsa/' : '//localhost/futebolsa/'),
-		namespace   : production ? 'futebolsa' : 'futebolsa-local',
-		bucket_url  : window.location.protocol + '//s3.amazonaws.com/futebolsa/',
+		facebook_id : production ? '406010089465472' : '259847027468549',
+		server_url  : window.location.protocol + (production ? '//fortis4.com/top-top/' : '//localhost/top-top/'),
+		namespace   : production ? 'top-top' : 'top-top-local',
 		permissions : ['publish_actions', 'email']
 	};
 	
