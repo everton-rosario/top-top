@@ -37,6 +37,22 @@ html, body {
     display: none;
 }
 
+.home-header {
+    border: 0px solid #b1d5bb;
+    border-bottom-width: 2px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+
+.home-user-img {
+    float: left;
+    margin-right: 10px;
+}
+
+.home-user-info {
+    float: left;
+}
+
 .friend-list-nobody {
     margin: 5px;
     padding: 5px;
@@ -102,8 +118,12 @@ html, body {
     cursor: pointer;
 }
 
+.btn-buy {
+    padding: 2px 10px !important;
+}
+
 .friend-game-header {
-    
+
 }
 
 .friend-game-header .friend-game-img {
@@ -185,7 +205,7 @@ html, body {
 }
 
 #search_field {
-	width: 100%;
-	border: 1px solid #777;
-	padding: 8px;
+    width: 100%;
+    border: 1px solid #777;
+    padding: 8px;
 }

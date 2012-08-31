@@ -4,6 +4,7 @@ var round_result_page = new function() {
 	$o.show = function() {
     	$('#round_result .friend-name').html(user_manager.users[round_manager.current_round.friend].first_name);
     	$('#round_result .game-category-name').html(round_manager.current_round.category);
+        $('#result_points').html(round_manager.current_round.points);
     	
     	$('#round_items_result').empty();
     	
@@ -45,7 +46,7 @@ var round_result_page = new function() {
 					)
 			);
 		});
-		
+                
 		page_controller.goTo('#round_result');
 	};
 	
