@@ -1,8 +1,9 @@
 var finish_round_page = new function() {
-	var $o = this;
+	var $o = this,
+		items = {};
 	
 	function selectItem(item_id) {
-		console.log('>>> item selected: ' + item_id);
+		items[item_id] = true;
 	}
 	
 	function renderItem(item) {
@@ -24,7 +25,7 @@ var finish_round_page = new function() {
 		return dom;
 	}
 	
-	$o.show = function(round) {
+	$o.show = function() {
 		$('#items_to_like').empty();
 		
 		round.items.forEach(function(item) {
@@ -36,7 +37,11 @@ var finish_round_page = new function() {
 	
 	$(document).ready(function() {
 		$('#submit_answers_button').click(function() {
-			round_result_page.show();
+			round_manager.submitAnswers(getKeys(items), function(success) {
+				if (success) {
+					round_result_page.show();
+				}
+			});
 		});
 	});
 };

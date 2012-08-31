@@ -1,8 +1,9 @@
 var start_round_page = new function() {
-	var $o = this;
+	var $o = this,
+		items = {};
 	
 	function selectItem(item_id) {
-		console.log('>>> item selected: ' + item_id);
+		items[item_id] = true;
 	}
 	
 	function renderItem(item) {
@@ -24,15 +25,13 @@ var start_round_page = new function() {
 		return dom;
 	}
 	
-	$o.show = function(category) {
+	$o.show = function() {
+		items = {};
+		
 		$('#items_to_guess').empty();
 		
-		server.getItems(category, function(success, items) {
-			if (success) {
-				items.forEach(function(item) {
-					$('#items_to_guess').append(renderItem(item));
-				});
-			}
+		round_manager.current_round.items.forEach(function(item) {
+			$('#items_to_guess').append(renderItem(item));
 		});
 		
 		page_controller.goTo('#start_round');
@@ -40,7 +39,11 @@ var start_round_page = new function() {
 	
 	$(document).ready(function() {
 		$('#submit_guesses_button').click(function() {
-			home_page.show();
+			round_manager.submitGuesses(getKeys(items), function(success) {
+				if (success) {
+					home_page.show();
+				}
+			});
 		});
 	});
 };

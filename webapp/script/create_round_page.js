@@ -17,7 +17,7 @@ var create_round_page = new function() {
 						.html(user_manager.users[friend_id].name)
 				)
 				.click(function() {
-					select_category_page.show();
+					select_category_page.show(friend_id);
 				});
 				
 		return dom;
