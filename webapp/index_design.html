@@ -49,7 +49,61 @@ and open the template in the editor.
             <br/><br/>
 
             <div class="text-center">
-                <div class="btn-default">Novo Jogo</div>  
+                <div class="btn-default" onclick="document.getElementById('view_home').style.display = 'none';document.getElementById('view_choose_friends').style.display = 'block'">Novo Jogo</div>  
+            </div>
+
+        </div>
+        
+        <div id="view_choose_friends" class="hidden">
+
+            <span class="text-large">Escolha um amigo</span>
+
+            <br/><br/>
+            
+            <div class="friend-list-item" onclick="document.getElementById('view_choose_friends').style.display = 'none';document.getElementById('view_choose_category').style.display = 'block'">
+                <img class="friend-img" src="https://graph.facebook.com/1010172174/picture" />
+                <span class="friend-name">Luiz Tordin</span>
+                <div class="clearB"></div>
+            </div>
+            <div class="friend-list-item">
+                <img class="friend-img" src="https://graph.facebook.com/853439200/picture" />
+                <span class="friend-name">Everton Rosario</span>
+                <div class="clearB"></div>
+            </div>
+
+            <div class="friend-list-item">
+                <img class="friend-img" src="https://graph.facebook.com/1010172174/picture" />
+                <span class="friend-name">Luiz Tordin</span>
+                <div class="clearB"></div>
+            </div>
+            <div class="friend-list-item">
+                <img class="friend-img" src="https://graph.facebook.com/853439200/picture" />
+                <span class="friend-name">Everton Rosario</span>
+                <div class="clearB"></div>
+            </div>
+
+        </div>
+        
+        <div id="view_choose_category" class="hidden">
+
+            <span class="text-large">Escolha um tema para jogar com <span id="choose_category_friend_name">Eduardo</span></span>
+
+            <br/><br/>
+            
+            <div class="friend-list-item">
+                <img class="friend-img" src="img/icn-category-cars.png" />
+                <span class="friend-name">Carros</span>
+                <div class="clearB"></div>
+            </div>
+            <div class="friend-list-item">
+                <img class="friend-img" src="img/icn-category-food.png" />
+                <span class="friend-name">Comidas</span>
+                <div class="clearB"></div>
+            </div>
+            <div class="friend-list-item">
+                <img class="friend-img" src="img/icn-category-movies.png" />
+                <span class="friend-name">Filmes</span>
+                <div class="clearB"></div>
             </div>
 
         </div>
