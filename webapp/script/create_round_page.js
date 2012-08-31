@@ -52,7 +52,7 @@ var create_round_page = new function() {
 		page_controller.goTo('#create_round');
 	};
 	
-	events.bind('application_friends_loaded non_application_friends_loaded', function() {
+	events.bind('friends_loaded', function() {
 		filterFriends();
 	});
 	

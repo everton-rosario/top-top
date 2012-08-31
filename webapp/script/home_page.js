@@ -30,24 +30,41 @@ var home_page = new function() {
 		return dom;
 	}
 	
+	var friends_loaded = false; 
+	
+	events.bind('friends_loaded', function(event) {
+		friends_loaded = true;
+	});
+	
 	events.bind('rounds_loaded', function(event, my_turn, their_turn) {
-		$('#my_turn_rounds, #their_turn_rounds').empty();
-		
-		$('#my_turn_rounds_empty').setVisible(!my_turn || !my_turn.length);
-		
-		if (my_turn) {
-			my_turn.forEach(function(round) {
-				$('#my_turn_rounds').append(renderRound(round, true));
-			});
+		function renderRounds() {
+			$('#my_turn_rounds, #their_turn_rounds').empty();
+			
+			$('#my_turn_rounds_empty').setVisible(!my_turn || !my_turn.length);
+			
+			if (my_turn) {
+				my_turn.forEach(function(round) {
+					$('#my_turn_rounds').append(renderRound(round, true));
+				});
+			}
+			
+			$('#their_turn_rounds_empty').setVisible(!their_turn || !their_turn.length);
+	
+			if (their_turn) {
+				their_turn.forEach(function(round) {
+					$('#their_turn_rounds').append(renderRound(round));
+				});
+			}
 		}
 		
-		$('#their_turn_rounds_empty').setVisible(!their_turn || !their_turn.length);
-
-		if (their_turn) {
-			their_turn.forEach(function(round) {
-				$('#their_turn_rounds').append(renderRound(round));
-			});
+		if (friends_loaded) {
+			renderRounds();
+		} else {
+			events.bind('friends_loaded', function() {
+				renderRounds();	
+			}, { one_time : true });
 		}
+		
 	});
 	
 	$o.show = function() {
