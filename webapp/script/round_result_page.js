@@ -8,7 +8,14 @@ var round_result_page = new function() {
     	$('#round_items_result').empty();
     	
 		round_manager.current_round.result['guessed-items'].forEach(function(item) {
-			console.log(item)
+			var correct;
+			
+			round_manager.current_round.result['true-items'].forEach(function(true_item) {
+				if (item.id == true_item.id) {
+					correct = true;
+				}
+			});
+			
 			$('#round_items_result').append(
 				$('<div/>')
 					.addClass('game-choosen')
@@ -24,7 +31,7 @@ var round_result_page = new function() {
 					.append(
 						$('<img/>')
 							.addClass('game-choosen-icn')
-							.attr('src', Math.random() > 0.5 ? 'img/icn-tick.png' : 'img/icn-x.png')
+							.attr('src', correct ? 'img/icn-tick.png' : 'img/icn-x.png')
 					)
 					.append(
 						$('<div/>')
