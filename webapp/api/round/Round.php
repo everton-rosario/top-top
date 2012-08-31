@@ -123,8 +123,7 @@ class Round {
     }
     
     public function finishedResponse() {
-        return array('id' => $this->id,
-                     'points' => $this->points);
+        return $this->toArray();
     }
 
     public function getItemIds() {
