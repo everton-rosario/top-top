@@ -43,7 +43,7 @@ var select_category_page = new function() {
 		
 		$('#choose_category_friend_name').html(user_manager.users[friend_id].first_name);
 		
-		$('#category_list').empty();
+		$('#categories_list').empty();
 		
 		pickRandom($o.categories, 3).forEach(function(category) {
 			$('#categories_list').append(renderCategory(category));

@@ -29,6 +29,10 @@ var create_round_page = new function() {
 	}
 	
 	function filterFriends(keyword) {
+		if (typeof(keyword) == 'undefined') {
+			keyword = $o.keyword;
+		}
+		
 		$('#friends_list').empty();
 		
 		friends_rendered = 0;
@@ -41,10 +45,14 @@ var create_round_page = new function() {
 	}
 	
 	$o.show = function() {
-		filterFriends('');
+		filterFriends();
 		
 		page_controller.goTo('#create_round');
 	};
+	
+	events.bind('application_friends_loaded non_application_friends_loaded', function() {
+		filterFriends();
+	});
 	
 	$(document).ready(function() {
 		$('#search_field').keydown(function() {
