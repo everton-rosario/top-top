@@ -31,7 +31,9 @@ var round_manager = new function() {
 	};
 	
 	$o.submitAnswers = function(items) {
-		server.finishRound($o.current_round.id, items, function(success) {
+		server.finishRound($o.current_round.id, items, function(success, data) {
+			$o.current_round.result = data;
+			
 			callback(success);
 		});
 	};
