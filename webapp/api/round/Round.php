@@ -45,16 +45,31 @@ class Round {
         $round = new Round();
 
         $item = $round->sdb->getAttributes(awsRoundDomain, $id);
+        $round = self::buildFromAttributes($item['id'],
+                                           $item['category'],
+                                           $item['user'],
+                                           $item['friend'],
+                                           self::fetchItems($round->category, json_decode($item['items'])),
+                                           $item['phase'],
+                                           NULL,
+                                           NULL,
+                                           NULL);
+        
+        return $round;
+    }
+    
+    public static function buildFromAttributes($id, $category, $user, $friend, $items, $phase, $guessedItems, $trueItems, $points) {
+        $round = new Round();
 
-        $round->id = $item['id'];
-        $round->category = $item['category'];
-        $round->user = $item['user'];
-        $round->friend = $item['friend'];
-        $round->items = self::fetchItems($round->category, json_decode($item['items']));
-        $round->phase = $item['phase'];
-        $round->guessedItems = json_decode($item['guessed-items']);
-        $round->trueItems = json_decode($item['true-items']);
-        $round->points = $item['points'];
+        $round->id = $id;
+        $round->category = $category;
+        $round->user = $user;
+        $round->friend = $friend;
+        $round->items = $items;
+        $round->phase = $phase;
+        $round->guessedItems = $guessedItems;
+        $round->trueItems = $trueItems;
+        $round->points = $points;
         
         return $round;
     }
@@ -133,6 +148,78 @@ class Round {
         }
         
         return $fetchedItems;
+    }
+    
+    
+    public static function listMyTurn($user) {
+        $roundManager = new Round();
+        $selectStarted = 'select * from `' . $roundManager->getDomain() . '` ' .
+                         'where friend = "'.$user.'" ' .
+                         'and phase = "started"';
+        $selectCreated = 'select * from `' . $roundManager->getDomain() . '` ' .
+                         'where user = "'.$user.'" ' .
+                         'and phase = "created"';
+        
+                  
+        $roundsStarted = $roundManager->doSelect($selectStarted);
+        $roundsCreated = $roundManager->doSelect($selectCreated);
+        //echo(json_encode(array_merge($roundsStarted, $roundsCreated)));
+        return array_merge($roundsStarted, $roundsCreated);
+    }
+
+    public static function listTheirsTurn($user) {
+        $roundManager = new Round();
+        $selectStarted = 'select * from `' . $roundManager->getDomain() . '` ' .
+                         'where user = "'.$user.'" ' .
+                         'and phase = "started"';
+        
+                  
+        $roundsStarted = $roundManager->doSelect($selectStarted);
+        //echo(json_encode($roundsStarted));
+        return $roundsStarted;
+    }
+
+    public function doSelect($select) {
+        $items = $this->sdb->select($this->domain, $select);
+        //echo(json_encode($items));
+        $rounds = array();
+        foreach ($items as $name => $itemLine) {
+            
+            $item = $itemLine['Attributes'];
+            
+            //echo(json_encode($item));
+
+            $round = self::buildFromAttributes($item['id'],
+                                               $item['category'],
+                                               $item['user'],
+                                               $item['friend'],
+                                               self::fetchItems($item['category'], json_decode($item['items'])),
+                                               $item['phase'],
+                                               isset($item['guessed-items']) ? json_decode($item['guessed-items']) : NULL,
+                                               isset($item['true-items']) ? json_decode($item['true-items']) : NULL,
+                                               isset($item['points']) ? $item['points'] : NULL);
+                                               
+            //echo (json_encode(var_dump($round)));
+            
+            array_push($rounds, $round->toArray());
+        }
+        
+        return $rounds;
+    }
+    
+    public function toArray() {
+        $response = array();
+        $response['id'] = $this->id;
+        $response['category'] = $this->category;
+        $response['user'] = $this->user;
+        $response['friend'] = $this->friend;
+        $response['items'] = $this->items;
+        $response['phase'] = $this->phase;
+        $response['guessed-items'] = $this->trueItems;
+        $response['true-items'] = $this->trueItems;
+        $response['points'] = (string) $this->points;
+        
+        return $response;
     }
 }    
 ?>
