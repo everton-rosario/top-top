@@ -7,11 +7,17 @@ var round_result_page = new function() {
     	
     	$('#round_items_result').empty();
     	
-		round_manager.current_round.result['guessed-items'].forEach(function(item) {
+    	var items_map = {};
+    	
+    	round_manager.current_round.items.forEach(function(item) {
+    		items_map[item.id] = item;
+    	});
+    	
+		round_manager.current_round.result['guessed-items'].forEach(function(item_id) {
 			var correct;
 			
-			round_manager.current_round.result['true-items'].forEach(function(true_item) {
-				if (item.id == true_item.id) {
+			round_manager.current_round.result['true-items'].forEach(function(true_item_id) {
+				if (item_id == true_item_id) {
 					correct = true;
 				}
 			});
@@ -22,11 +28,11 @@ var round_result_page = new function() {
 					.append(
 						$('<img/>')
 							.addClass('game-choosen-img')
-							.attr('src', item.image)
+							.attr('src', items_map[item_id].image)
 					)
 					.append(
 						$('<span/>')
-							.html(item.title)
+							.html(items_map[item_id].title)
 					)
 					.append(
 						$('<img/>')

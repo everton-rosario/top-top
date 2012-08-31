@@ -39,21 +39,14 @@ function ItemMosaic(selector, items) {
 	$(selector).empty();
 	
 	items.forEach(function(item, i) {
-		if (i == 3 || i == 5) {
+		if (i == 3 || i == 6) {
 			$(selector).append(
 				$('<div/>')
 					.addClass('clearB')
 			);
-			
-		} else if (i == 4) {
-			$(selector).append(renderItem({
-				image : '',
-				title : 'Nenhum',
-				id    : 0
-			}));
 		}
 		
-		if (i < 8) {
+		if (i < 9) {
 			$(selector).append(renderItem(item));
 		}
 	});
