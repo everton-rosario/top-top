@@ -10,6 +10,13 @@ var round_manager = new function() {
 		} else {
 			server.getRounds(function(success, data) {
 				if (success) {
+					if (data.my_turn) {
+						//work-around para friend vs user
+						data.my_turn.forEach(function(round) {
+							round.friend = round.user;
+						});
+					}
+					
 					events.fire('rounds_loaded', data.my_turn, data.their_turn);
 				}
 			});
