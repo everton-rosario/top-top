@@ -9,6 +9,7 @@ yellow: #dfd349;
 html, body {
     background-color: #f2f187;
     font-family: 'Peralta', cursive;
+    -webkit-user-select: none;
 }
 
 .clearB {
@@ -56,6 +57,26 @@ html, body {
     float: left;
 }
 
+.category-list-item {
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid #92a184;
+    border-bottom-width: 3px;
+    background-color: #dfd349;
+    border-radius: 5px;
+}
+
+.category-list-item .category-img {
+    width: 32px;
+    height: 32px;
+    margin-right: 5px;
+    float: left;
+}
+
+.category-list-item .category-name {
+    float: left;
+}
+
 .btn-default {
     margin: 5px;
     padding: 12px 24px;
@@ -68,4 +89,56 @@ html, body {
     text-align: center;
     font-weight: bold;
     box-shadow: 0 2px 2px -1px #333;
+}
+
+.friend-game-header {
+    
+}
+
+.friend-game-header .friend-game-img {
+    width: 48px;
+    height: 48px;
+    margin-right: 5px;
+    float: left;
+}
+
+.friend-game-header .friend-game-name {
+
+}
+
+.game-category-name {
+    margin: 10px 0px;
+    padding: 10px 0px;
+    border-width: 0px;
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+    border-style: solid;
+    border-color: #b1d5bb;
+    font-weight: bold;
+    text-align: center;
+    color: #3f836e;
+}
+
+.game-choice-wrapper {
+    display: inline-block;
+}
+
+.game-choice {
+    float: left;
+    width: 100px;
+    height: 115px;
+    text-align: center;
+}
+.game-choice img {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    border: 1px solid #b1d5bb;
+}
+.game-choice div {
+    font-size: 10px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-family: helvetica, arial;
 }
