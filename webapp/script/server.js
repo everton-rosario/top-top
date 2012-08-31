@@ -110,7 +110,7 @@ var server = new function() {
 		});
 	};
 	
-	$o.listCategories = function(callback) {
+	$o.getCategories = function(callback) {
 		if (!callback) {
 			throw 'missing parameters';
 		}

@@ -1,10 +1,12 @@
-var create_round_page = new function() {
+var select_category_page = new function() {
 	var $o = this,
 		categories = [];
-	
-	server.getCategories(function(success, categories) {
-		$o.categories = categories;
-	});
+
+	$(document).ready(function() {
+		server.getCategories(function(success, categories) {
+			$o.categories = categories;
+		});
+	});	
 	
 	function renderCategory(category) {
 		var dom =
