@@ -15,7 +15,7 @@ if (!isset($_REQUEST['user']) || !isset($_REQUEST['friend']) || !isset($_REQUEST
     $items = $category->getItems();
     
     $round = Round::create($category->getId(), $user, $friend, $category->getItems());
-    $round->store();
+    $round->storeNew();
     
     printJSONResult(true, 'success', $round->createdResponse());
 }
