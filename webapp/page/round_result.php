@@ -1,5 +1,5 @@
 <div id="round_result" class="page" style="display: none;">
-    <span class="text-large">Resultado de <span class="friend_name"></span></span>
+    <span class="text-large">Resultado!</span>
     
     <div class="game-category-name"></div>
     

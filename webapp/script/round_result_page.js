@@ -4,12 +4,11 @@ var round_result_page = new function() {
 	$o.show = function() {
     	$('#round_result .friend-name').html(user_manager.users[round_manager.current_round.friend].first_name);
     	$('#round_result .game-category-name').html(round_manager.current_round.category);
-    
-    	//supondo result.guessed_items com [1,2,3] e result.true_items com [1,5]
     	
     	$('#round_items_result').empty();
     	
-		round_manager.current_round.result.guessed_items.forEach(function(item) {
+		round_manager.current_round.result['guessed-items'].forEach(function(item) {
+			console.log(item)
 			$('#round_items_result').append(
 				$('<div/>')
 					.addClass('game-choosen')
@@ -25,7 +24,7 @@ var round_result_page = new function() {
 					.append(
 						$('<img/>')
 							.addClass('game-choosen-icn')
-							.attr('src', correct ? 'img/icn-tick.png' : 'img/icn-x.png')
+							.attr('src', Math.random() > 0.5 ? 'img/icn-tick.png' : 'img/icn-x.png')
 					)
 					.append(
 						$('<div/>')
@@ -34,7 +33,7 @@ var round_result_page = new function() {
 			);
 		});
 		
-		page_controller.goTo('#finish_round');
+		page_controller.goTo('#round_result');
 	};
 	
 	$(document).ready(function() {

@@ -7,7 +7,9 @@
     <div class="game-category-name"></div>
     <div class="clearB"></div>
 
-	<div id="items_to_like"></div>
+    <div class="text-center">
+		<div id="items_to_like" class="game-choice-wrapper"></div>
+    </div>
 
     <div class="text-center">
         <div class="btn-default" id="submit_answers_button">OK!</div>  
