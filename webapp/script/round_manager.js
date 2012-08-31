@@ -13,7 +13,7 @@ var round_manager = new function() {
 					if (data.my_turn) {
 						//work-around para friend vs user
 						data.my_turn.forEach(function(round) {
-							round.friend = round.user;
+							round.friend = round.user == user_manager.user_id ? round.friend : round.user;
 						});
 					}
 					
