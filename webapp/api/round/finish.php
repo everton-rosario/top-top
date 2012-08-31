@@ -15,7 +15,7 @@ if (!isset($_REQUEST['round-id']) || !isset($_REQUEST['true-items'])) {
     $round->setTrueItems(explode(',', $trueItems));
     $success = $round->storeTruth();
 
-    printJSONResult($success, $success ? 'success' : 'error', $round->finishedResponse());
+    printJSONResult($success, $success ? 'success' : 'error', $round->toArray());
 }
 
 
