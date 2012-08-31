@@ -1,0 +1,71 @@
+/*
+colors:
+dark-green: #3f836e;
+gray-green: #92a184;
+light-green: #b1d5bb;
+light-yellow: #f2f187;
+yellow: #dfd349;
+*/
+html, body {
+    background-color: #f2f187;
+    font-family: 'Peralta', cursive;
+}
+
+.clearB {
+    clear: both;
+}
+.floatL {
+    float: left;
+}
+.floatR {
+    float: right;
+}
+.text-center {
+    text-align: center;
+}
+.text-right {
+    text-align: right;
+}
+.text-small {
+    font-size: 0.8em;
+}
+.text-large {
+    font-size: 1.5em;
+}
+.hidden {
+    display: none;
+}
+
+.friend-list-item {
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid #3f836e;
+    border-bottom-width: 3px;
+    background-color: #b1d5bb;
+    border-radius: 5px;
+}
+
+.friend-list-item .friend-img {
+    width: 32px;
+    height: 32px;
+    margin-right: 5px;
+    float: left;
+}
+
+.friend-list-item .friend-name {
+    float: left;
+}
+
+.btn-default {
+    margin: 5px;
+    padding: 12px 24px;
+    border: 1px solid #b1d5bb;
+    border-bottom-width: 3px;
+    background-color: #3f836e;
+    border-radius: 5px;
+    display: inline-block;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 2px 2px -1px #333;
+}
