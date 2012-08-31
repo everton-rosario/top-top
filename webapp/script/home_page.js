@@ -14,6 +14,14 @@ var home_page = new function() {
 					$('<span/>')
 						.addClass('friend-name')
 						.html(user_manager.users[round.friend].name)
+						.append(
+							$('<br/>')
+						)
+						.append(
+							$('<span/>')
+								.addClass('details')
+								.html(round.category)
+						)
 				)
 				.append(
 					$('<div/>')
