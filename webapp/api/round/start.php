@@ -12,7 +12,7 @@ if (!isset($_REQUEST['round-id']) || !isset($_REQUEST['guessed-items'])) {
     $guessedItems = $_REQUEST['guessed-items'];
     
     $round = Round::findById($roundId);
-    $round->guessedItems = explode(',', $guessedItems);
+    $round->setGuessedItems(explode(',', $guessedItems));
     $success = $round->storeGuessed();
 
     printJSONResult($success, $success ? 'success' : 'error');

@@ -16,6 +16,9 @@ class Round {
     private $friend;
     private $items;
     private $phase;
+    private $guessedItems;
+    private $trueItems;
+    private $points;
 
     public function __construct() {
         $this->sdb = new SimpleDB(awsAccessKey, awsSecretKey, false);
@@ -49,6 +52,9 @@ class Round {
         $round->friend = $item['friend'];
         $round->items = self::fetchItems($round->category, json_decode($item['items']));
         $round->phase = $item['phase'];
+        $round->guessedItems = json_decode($item['guessed-items']);
+        $round->trueItems = json_decode($item['true-items']);
+        $round->points = $item['points'];
         
         return $round;
     }
@@ -65,6 +71,11 @@ class Round {
         return $this->sdb->putAttributes($this->domain, $this->id, $request);
     }
     
+    
+    public function setGuessedItems($guessedItems) {
+        $this->guessedItems = $guessedItems;
+    }
+
     public function storeGuessed() {
         $request = array();
         $request['id'] = array('value' => $this->id);
@@ -73,12 +84,34 @@ class Round {
 
         return $this->sdb->putAttributes($this->domain, $this->id, $request);
     }
-    
+
+    public function setTrueItems($trueItems) {
+        $this->trueItems = $trueItems;
+        $intersection = array_intersect($this->guessedItems, $this->trueItems);
+        $this->points = sizeof($intersection);
+    }
+
+    public function storeTruth() {
+        
+        $request = array();
+        $request['id'] = array('value' => $this->id);
+        $request['true-items'] = array('value' => json_encode($this->trueItems));
+        $request['phase'] = array('value' => 'finished', 'replace' => 'true');
+        $request['points'] = array('value' => (string) $this->points, 'replace' => 'true');
+
+        return $this->sdb->putAttributes($this->domain, $this->id, $request);
+    }
+
     public function createdResponse() {
         return array('id' => $this->id,
                      'items' => $this->items);
     }
     
+    public function finishedResponse() {
+        return array('id' => $this->id,
+                     'points' => $this->points);
+    }
+
     public function getItemIds() {
         $ids = array();
         foreach ($this->items as $key => $item) {
