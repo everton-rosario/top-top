@@ -43,6 +43,8 @@ var round_manager = new function() {
 	};
 	
 	$o.submitAnswers = function(items, callback) {
+		social_helper.shareFavorites($o.current_round.category, items);
+		
 		server.finishRound($o.current_round.id, items, function(success, data) {
 			$o.current_round.result = data;
 			
