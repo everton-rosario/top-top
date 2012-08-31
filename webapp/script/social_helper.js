@@ -7,7 +7,7 @@ var social_helper = new function() {
     		title             : 'Avise seu amigo',
     		message           : 'tentou adivinhar que ' + round.category + ' voce mais gosta',
     		new_style_message : 'true',
-    		to                : round.friend_id
+    		to                : round.friend
     	},
     	function(response) {
 			callback(response && response.to);

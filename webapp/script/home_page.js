@@ -8,12 +8,12 @@ var home_page = new function() {
 				.append(
 					$('<img/>')
 						.addClass('friend-img')
-						.attr('src', user_manager.getPicture(round.friend_id, 'square'))
+						.attr('src', user_manager.getPicture(round.friend, 'square'))
 				)
 				.append(
 					$('<span/>')
 						.addClass('friend-name')
-						.html(user_manager.users[round.friend_id].name)
+						.html(user_manager.users[round.friend].name)
 				)
 				.append(
 					$('<div/>')
@@ -33,17 +33,21 @@ var home_page = new function() {
 	events.bind('rounds_loaded', function(event, my_turn, their_turn) {
 		$('#my_turn_rounds, #their_turn_rounds').empty();
 		
-		$('#my_turn_rounds_empty').setVisible(!my_turn.length);
+		$('#my_turn_rounds_empty').setVisible(!my_turn || !my_turn.length);
 		
-		my_turn.forEach(function(round) {
-			$('#my_turn_rounds').append(renderRound(round, true));
-		});
+		if (my_turn) {
+			my_turn.forEach(function(round) {
+				$('#my_turn_rounds').append(renderRound(round, true));
+			});
+		}
 		
-		$('#their_turn_rounds_empty').setVisible(!their_turn.length);
+		$('#their_turn_rounds_empty').setVisible(!their_turn || !their_turn.length);
 
-		their_turn.forEach(function(round) {
-			$('#their_turn_rounds').append(renderRound(round));
-		});
+		if (their_turn) {
+			their_turn.forEach(function(round) {
+				$('#their_turn_rounds').append(renderRound(round));
+			});
+		}
 	});
 	
 	$o.show = function() {
