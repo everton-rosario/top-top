@@ -15,13 +15,19 @@ var select_category_page = new function() {
 				.addClass('category')
 				.html(category)
 				.click(function() {
-					start_round_page.show(category);
+					round_manager.createRound($o.friend_id, category, function(success) {
+						if (success) {
+							start_round_page.show();
+						}
+					});
 				});
 				
 		return dom;
 	}
 	
-	$o.show = function() {
+	$o.show = function(friend_id) {
+		$o.friend_id = friend_id;
+		
 		$('#category_list').empty();
 		
 		pickRandom($o.categories, 3).forEach(function(category) {

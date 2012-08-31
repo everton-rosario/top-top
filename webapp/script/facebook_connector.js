@@ -12,19 +12,19 @@ var facebook_connector = new function() {
 		FB.Data.query(
 			'select ' + permissions.join(',') + ' ' +
 			'from permissions ' +
-			'where uid = me()'
-		).wait(function(rows) {
-			if (rows) {
-				if (permissions.some(function(permission) {
-					return !rows[0][permission];
-				})) {
-					FB.ui({
-						method : 'permissions.request',
-						perms  : permissions.join(',')
-					});
+			'where uid = me()',
+			function(rows) {
+				if (rows) {
+					if (permissions.some(function(permission) {
+						return !rows[0][permission];
+					})) {
+						FB.ui({
+							method : 'permissions.request',
+							perms  : permissions.join(',')
+						});
+					}
 				}
-			}
-		});
+			});
 	};
 	
 	$(document).ready(function() {

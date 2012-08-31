@@ -163,28 +163,27 @@ $.fn.setVisible = function(visible) {
 	return $(this);
 };
 
+function getKeys(map) {
+	var list = [];
+	
+	for (var k in map) {
+		list.push(k);
+	}
+
+	return list;
+}
+
 function pickRandom(list, amount) {
 	if (amount >= list.length) {
 		return list;
 	}
 	
-	var result = [],
-		map = {},
-		size = 0;
+	var map = {};
 
 	do {
 		map[list[Math.round(Math.random() * (list.length - 1))]] = true;
-		
-		size = 0;
-
-		for (var k in map) {
-			size++;
-		}
-	} while (size < amount);
+	} while (getKeys(map).length < amount);
 	
-	for (var k in map) {
-		result.push(k);
-	}
 	
-	return result;
+	return getKeys(map);
 }

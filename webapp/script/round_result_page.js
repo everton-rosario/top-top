@@ -7,7 +7,7 @@ var round_result_page = new function() {
 	
 	$(document).ready(function() {
 		$('#result_checked_button').click(function() {
-			home_page.show();
+			select_category_page.show(round_manager.current_round.friend_id);
 		});
 	});
 };

@@ -133,31 +133,4 @@ var server = new function() {
 			}			
 		});
 	};
-	
-	$o.getItems = function(category, callback) {
-		if (!category || !callback) {
-			throw 'missing parameters';
-		}
-		
-		if (typeof(callback) != 'function') {
-			throw 'invalid parameters';
-		}
-		
-		$.ajax({
-			url     : environment.server_url + 'api/category/items.php',
-			data    : {
-				category : category
-			},
-			success : function(response) {
-				if (response && response.success) {
-					callback(true, response.data);
-				} else {
-					callback(false);
-				}
-			},
-			error   : function() {
-				callback(false);	
-			}			
-		});
-	};
 };

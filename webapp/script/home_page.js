@@ -17,7 +17,8 @@ var home_page = new function() {
 				
 		if (playable) {
 			dom.click(function() {
-				finish_round_page.show(round);
+				round_manager.current_round = round;
+				finish_round_page.show();
 			});
 		}
 				
@@ -37,6 +38,9 @@ var home_page = new function() {
 	});
 	
 	$o.show = function() {
+		round_manager.current_round = null;
+		round_manager.loadRounds();
+		
 		page_controller.goTo('#home');
 	};
 	
