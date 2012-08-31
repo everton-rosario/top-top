@@ -8,12 +8,12 @@ var home_page = new function() {
 				.append(
 					$('<img/>')
 						.addClass('friend-img')
-						.attr('src', user_manager.getPicture(round.friend_id, 'square'))
+						.attr('src', user_manager.getPicture(round.friend, 'square'))
 				)
 				.append(
 					$('<span/>')
 						.addClass('friend-name')
-						.html(user_manager.users[round.friend_id].name)
+						.html(user_manager.users[round.friend].name)
 				)
 				.append(
 					$('<div/>')

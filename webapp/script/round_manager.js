@@ -3,11 +3,9 @@ var round_manager = new function() {
 	
 	$o.loadRounds = function() {
 		if (!user_manager.user_id) {
-			console.log('try again...');
-			
 			setTimeout(function() {
 				$o.loadRounds();
-			}, 500);
+			}, 100);
 			
 		} else {
 			server.getRounds(function(success, data) {
@@ -21,7 +19,7 @@ var round_manager = new function() {
 	$o.createRound = function(friend_id, category, callback) {
 		server.createRound(friend_id, category, function(success, round) {
 			$o.current_round = round;
-			round.friend_id = friend_id;
+			round.friend = friend_id;
 			round.category = category;
 			callback(success);
 		});
@@ -37,7 +35,7 @@ var round_manager = new function() {
 		});
 	};
 	
-	$o.submitAnswers = function(items) {
+	$o.submitAnswers = function(items, callback) {
 		server.finishRound($o.current_round.id, items, function(success, data) {
 			$o.current_round.result = data;
 			
