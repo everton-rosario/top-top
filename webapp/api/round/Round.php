@@ -44,16 +44,24 @@ class Round {
         $request['category'] = array('value' => $this->category);
         $request['user'] = array('value' => $this->user);
         $request['friend'] = array('value' => $this->friend);
-        $request['items'] = array('value' => $this->items);
+        $request['items'] = array('value' => json_encode($this->getItemIds()));
         $request['phase'] = array('value' => $this->phase);
 
         return $this->sdb->putAttributes($this->domain, $this->id, $request);
-        
     }
     
     public function createdResponse() {
         return array('id' => $this->id,
                      'items' => $this->items);
+    }
+    
+    public function getItemIds() {
+        $ids = array();
+        foreach ($this->items as $key => $item) {
+            $ids[$key] = $item['id'];
+        }
+        
+        return $ids;
     }
 }    
 ?>
