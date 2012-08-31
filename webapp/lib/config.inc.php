@@ -2,6 +2,8 @@
     if (!defined('__ROOT__')) define('__ROOT__', $_SERVER['DOCUMENT_ROOT']);
     require_once(__ROOT__.'/lib/sdb.php');
     
+    ini_set('display_errors', 0);
+    
     date_default_timezone_set('America/Sao_Paulo');
     
     // Global function
