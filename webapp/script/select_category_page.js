@@ -13,7 +13,10 @@ var select_category_page = new function() {
 		var dom =
 			$('<div/>')
 				.addClass('category')
-				.html(category);
+				.html(category)
+				.click(function() {
+					start_round_page.show(category);
+				});
 				
 		return dom;
 	}
