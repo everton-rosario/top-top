@@ -70,8 +70,8 @@ var server = new function() {
 		$.ajax({
 			url     : environment.server_url + 'api/round/start.php',
 			data    : {
-				round  : round_id,
-				friend : items.join(',')
+				'round-id'      : round_id,
+				'guessed-items' : items.join(',')
 			},
 			success : function(response) {
 				callback(response && response.success);
@@ -94,8 +94,8 @@ var server = new function() {
 		$.ajax({
 			url     : environment.server_url + 'api/round/finish.php',
 			data    : {
-				round  : round_id,
-				friend : items.join(',')
+				'round-id'   : round_id,
+				'true-items' : items.join(',')
 			},
 			success : function(response) {
 				if (response && response.success) {

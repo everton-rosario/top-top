@@ -4,7 +4,17 @@ function ItemMosaic(selector, items) {
 	$o.items = {};
 
 	function toggleItem(item_id) {
-		$o.items[item_id] = !$o.items[item_id];
+		var is_selected = $o.items[item_id];
+		
+		if (is_selected || getKeys($o.items).length < 3) {
+			if (is_selected) {
+				delete $o.items[item_id];
+			} else {
+				$o.items[item_id] = true;
+			}
+		}
+		
+		return !!$o.items[item_id];
 	}
 	
 	function renderItem(item) {
@@ -20,8 +30,7 @@ function ItemMosaic(selector, items) {
 						.html(item.title)
 				)
 				.click(function(event) {
-					$(event.target).toggleClass('selected')
-					toggleItem(item.id);
+					$(event.target).toggleClass('selected', toggleItem(item.id));
 				});
 				
 		return dom;

@@ -22,7 +22,11 @@ var round_manager = new function() {
 	
 	$o.submitGuesses = function(items, callback) {
 		server.startRound($o.current_round.id, items, function(success) {
-			callback(success);
+			if (success) {
+				social_helper.sendNotification($o.current_round, function() {
+					callback(success);
+				});
+			}
 		});
 	};
 	
