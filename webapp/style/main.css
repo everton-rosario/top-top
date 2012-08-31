@@ -136,6 +136,7 @@ html, body {
     border: 1px solid #b1d5bb;
 }
 .game-choice div {
+    width: 99px;
     font-size: 10px;
     overflow: hidden;
     white-space: nowrap;
