@@ -1,0 +1,79 @@
+{
+    "cars" : {
+        "title": "Cars",
+        "items": [
+            {
+                "id" : "1000",
+                "title": "Porsche",
+                "image": "http://someURL"
+            },
+            {
+                "id" : "1001",
+                "title": "BMW",
+                "image": "http://someURLbmw"
+            },
+            {
+                "id" : "1002",
+                "title": "Ford",
+                "image": "http://someURL1002"
+            },
+            {
+                "id" : "1003",
+                "title": "Volkswagen",
+                "image": "http://someURL1003"
+            }
+        ]
+    },
+    
+    "movies" : {
+        "title": "Movies",
+        "items": [
+            {
+                "id" : "2000",
+                "title": "Matrix",
+                "image": "http://someURL"
+            },
+            {
+                "id" : "2001",
+                "title": "Titanic",
+                "image": "http://someURLbmw"
+            },
+            {
+                "id" : "2002",
+                "title": "Batman",
+                "image": "http://someURL1002"
+            },
+            {
+                "id" : "2003",
+                "title": "Terminator",
+                "image": "http://someURL1003"
+            }
+        ]
+    },
+
+    "food" : {
+        "title": "Food",
+        "items": [
+            {
+                "id" : "3000",
+                "title": "Pizza",
+                "image": "http://someURL"
+            },
+            {
+                "id" : "3001",
+                "title": "Lasagna",
+                "image": "http://someURLbmw"
+            },
+            {
+                "id" : "3002",
+                "title": "Hot-dog",
+                "image": "http://someURL1002"
+            },
+            {
+                "id" : "3003",
+                "title": "Spaghetti",
+                "image": "http://someURL1003"
+            }
+        ]
+    }
+}
