@@ -12,9 +12,9 @@ if (!isset($_REQUEST['user']) || !isset($_REQUEST['friend']) || !isset($_REQUEST
     $friend = $_REQUEST['friend'];
     
     $category = new Category($_REQUEST['category']);
-    $items = $category->getItems();
+    $items = $category->getSortedItems();
     
-    $round = Round::create($category->getId(), $user, $friend, $category->getItems());
+    $round = Round::create($category->getId(), $user, $friend, $items);
     $round->storeNew();
     
     printJSONResult(true, 'success', $round->createdResponse());
