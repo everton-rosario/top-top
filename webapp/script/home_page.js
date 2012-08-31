@@ -12,7 +12,7 @@ var home_page = new function() {
 				)
 				.append(
 					$('<div/>')
-						.html(user_manager.getUser(round.friend_id).name)
+						.html(user_manager.users[round.friend_id].name)
 				);
 				
 		return dom;
@@ -28,5 +28,13 @@ var home_page = new function() {
 		their_turn.forEach(function(round) {
 			$('#their_turn_rounds').append(renderRound(round));
 		});
+	});
+	
+	$o.show = function() {
+		page_controller.goTo('#home');
+	};
+	
+	$(document).ready(function() {
+		$('#create_round_button').click(create_round_page.show);
 	});
 };

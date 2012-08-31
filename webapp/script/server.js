@@ -120,7 +120,7 @@ var server = new function() {
 		}
 		
 		$.ajax({
-			url     : environment.server_url + 'api/categories.php',
+			url     : environment.server_url + 'api/category/list.php',
 			success : function(response) {
 				if (response && response.success) {
 					callback(true, response.data);
@@ -144,7 +144,10 @@ var server = new function() {
 		}
 		
 		$.ajax({
-			url     : environment.server_url + 'api/items.php',
+			url     : environment.server_url + 'api/category/items.php',
+			data    : {
+				category : category
+			},
 			success : function(response) {
 				if (response && response.success) {
 					callback(true, response.data);

@@ -162,3 +162,29 @@ $.fn.setVisible = function(visible) {
 	
 	return $(this);
 };
+
+function pickRandom(list, amount) {
+	if (amount >= list.length) {
+		return list;
+	}
+	
+	var result = [],
+		map = {},
+		size = 0;
+
+	do {
+		map[list[Math.round(Math.random() * (list.length - 1))]] = true;
+		
+		size = 0;
+
+		for (var k in map) {
+			size++;
+		}
+	} while (size < amount);
+	
+	for (var k in map) {
+		result.push(k);
+	}
+	
+	return result;
+}
