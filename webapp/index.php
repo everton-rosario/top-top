@@ -12,6 +12,7 @@
 </head>
 <body>
 	<div id="fb-root"></div>
+	<?php includeFiles('page/*.php') ?>
 </body>
 </html>
 <?php
@@ -21,11 +22,5 @@
 		foreach($files as $file) {
 			include $file;
 		}
-	}
-	
-	function listFiles($pattern) {
-		$files = glob($pattern);
-		sort($files);
-		return join(',', $files);
 	}
 ?>
