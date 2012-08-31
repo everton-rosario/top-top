@@ -33,7 +33,7 @@ class Category {
     
     public function getSortedItems() {
         shuffle($this->items);
-        return array_slice($this->items, 0, 8); 
+        return array_slice($this->items, 0, 9); 
     }
 
     public function getCategories() {

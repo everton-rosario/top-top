@@ -210,7 +210,7 @@ class Round {
         $response['friend'] = $this->friend;
         $response['items'] = $this->items;
         $response['phase'] = $this->phase;
-        $response['guessed-items'] = $this->trueItems;
+        $response['guessed-items'] = $this->guessedItems;
         $response['true-items'] = $this->trueItems;
         $response['points'] = (string) $this->points;
         
