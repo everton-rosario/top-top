@@ -35,6 +35,8 @@ var home_page = new function() {
 	};
 	
 	$(document).ready(function() {
-		$('#create_round_button').click(create_round_page.show);
+		$('#create_round_button').click(function() {
+			create_round_page.show();
+		});
 	});
 };
