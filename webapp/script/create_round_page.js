@@ -1,6 +1,8 @@
 var create_round_page = new function() {
 	var $o = this;
 	
+	$o.keyword = '';
+	
 	var friends_rendered = 0;
 	
 	function renderFriend(friend_id) {
